@@ -5,14 +5,14 @@ import { useTranslation } from "react-i18next";
 
 import Form from "./Form";
 
-import { NOTES_FORM_INITIAL_FORM_VALUES } from "../constants";
+import { INITIAL_FORM_VALUES } from "../constants";
 
 export const Create = ({ fetchNotes, showPane, setShowPane }) => {
+  const { Header } = Pane;
+
   const { t } = useTranslation();
 
   const onClose = () => setShowPane(false);
-
-  const { Header } = Pane;
 
   return (
     <Pane isOpen={showPane} onClose={onClose}>
@@ -23,7 +23,7 @@ export const Create = ({ fetchNotes, showPane, setShowPane }) => {
       </Header>
       <Form
         isEdit={false}
-        note={NOTES_FORM_INITIAL_FORM_VALUES}
+        note={INITIAL_FORM_VALUES}
         refetch={fetchNotes}
         onClose={onClose}
       />

@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
 
-import { NOTES_FORM_VALIDATION_SCHEMA, ROLES, TAGS } from "../constants";
+import { VALIDATION_SCHEMA, ROLES, TAGS } from "./constants";
 
 const Form = ({ onClose, refetch, note, isEdit }) => {
   const { Footer, Body } = Pane;
@@ -16,7 +16,6 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
   const { t } = useTranslation();
 
   const handleSubmit = async values => {
-    if (isEdit) return;
     try {
       if (isEdit) {
         await notesApi.update(note.id, values);
@@ -34,7 +33,7 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
   return (
     <Formik
       initialValues={note}
-      validationSchema={NOTES_FORM_VALIDATION_SCHEMA}
+      validationSchema={VALIDATION_SCHEMA}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
