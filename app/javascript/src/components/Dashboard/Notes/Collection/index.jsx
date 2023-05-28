@@ -8,7 +8,7 @@ import EmptyState from "components/commons/EmptyState";
 
 import Card from "./Card";
 
-const Collection = ({ notes = [] }) => {
+const Collection = ({ notes = [], setSelectedNote, setIsDeleteAlertOpen }) => {
   const { t } = useTranslation();
 
   if (isNotPresent(notes)) {
@@ -26,7 +26,12 @@ const Collection = ({ notes = [] }) => {
   return (
     <div className="mt-8 flex w-full flex-col gap-4">
       {notes.map(note => (
-        <Card key={note.id} note={note} />
+        <Card
+          key={note.id}
+          note={note}
+          setIsDeleteAlertOpen={setIsDeleteAlertOpen}
+          setSelectedNote={setSelectedNote}
+        />
       ))}
     </div>
   );

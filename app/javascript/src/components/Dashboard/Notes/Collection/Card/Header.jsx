@@ -4,8 +4,20 @@ import { MenuVertical } from "neetoicons";
 import { Dropdown, Typography } from "neetoui";
 import { useTranslation } from "react-i18next";
 
-const Header = ({ title }) => {
+const Header = ({ note, setSelectedNote, setIsDeleteAlertOpen }) => {
   const { t } = useTranslation();
+
+  const { title } = note;
+
+  const handleDelete = () => {
+    setSelectedNote(note);
+    setIsDeleteAlertOpen(true);
+  };
+
+  const {
+    Menu,
+    MenuItem: { Button },
+  } = Dropdown;
 
   return (
     <div className="flex justify-between gap-4">
@@ -13,14 +25,12 @@ const Header = ({ title }) => {
         {title}
       </Typography>
       <Dropdown buttonStyle="text" icon={MenuVertical}>
-        <Dropdown.Menu>
-          <Dropdown.MenuItem.Button>
-            {t("common.edit")}
-          </Dropdown.MenuItem.Button>
-          <Dropdown.MenuItem.Button style="danger">
+        <Menu>
+          <Button>{t("common.edit")}</Button>
+          <Button style="danger" onClick={handleDelete}>
             {t("common.delete")}
-          </Dropdown.MenuItem.Button>
-        </Dropdown.Menu>
+          </Button>
+        </Menu>
       </Dropdown>
     </div>
   );
