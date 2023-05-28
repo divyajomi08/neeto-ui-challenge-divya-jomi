@@ -8,7 +8,7 @@ import EmptyState from "components/commons/EmptyState";
 
 import Card from "./Card";
 
-const Collection = ({ notes }) => {
+const Collection = ({ notes = [] }) => {
   const { t } = useTranslation();
 
   if (isNotPresent(notes)) {

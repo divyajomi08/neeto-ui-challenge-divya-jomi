@@ -3,19 +3,26 @@ import React, { useState } from "react";
 import { Search } from "neetoicons";
 import { Typography } from "neetoui";
 import { MenuBar as NeetoUIMenuBar } from "neetoui/layouts";
+import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import { v4 as uuid } from "uuid";
 
 import { TAG_ICONS } from "./constants";
 
-const MenuBar = ({ showMenu, mainBlocks, segmentBlocks, tagBlocks }) => {
+const MenuBar = ({
+  showMenu = false,
+  title,
+  mainBlocks = [],
+  segmentBlocks = [],
+  tagBlocks = [],
+}) => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
 
   const { t } = useTranslation();
 
   return (
     <div className="flex">
-      <NeetoUIMenuBar showMenu={showMenu} title={t("common.notes")}>
+      <NeetoUIMenuBar showMenu={showMenu} title={title}>
         {mainBlocks.map(({ label, isActive, count }) => (
           <NeetoUIMenuBar.Block
             active={isActive}
@@ -65,6 +72,14 @@ const MenuBar = ({ showMenu, mainBlocks, segmentBlocks, tagBlocks }) => {
       </NeetoUIMenuBar>
     </div>
   );
+};
+
+MenuBar.propTypes = {
+  showMenu: PropTypes.bool,
+  title: PropTypes.string,
+  mainBlocks: PropTypes.array,
+  segmentBlocks: PropTypes.array,
+  tagBlocks: PropTypes.array,
 };
 
 export default MenuBar;

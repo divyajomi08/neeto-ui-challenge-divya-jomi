@@ -49,6 +49,7 @@ const Notes = () => {
         segmentBlocks={SEGMENT_BLOCKS}
         showMenu={isMenuOpen}
         tagBlocks={TAG_BLOCKS}
+        title={t("common.notes")}
       />
       <Container>
         <Header

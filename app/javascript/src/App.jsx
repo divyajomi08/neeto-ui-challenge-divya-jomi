@@ -1,9 +1,10 @@
 import React from "react";
 
+import "common/i18n";
 import { AuthProvider } from "contexts/auth";
 import { UserProvider } from "contexts/user";
+import "lib/dayjs";
 
-import "./common/i18n";
 import Main from "./components/Main";
 
 const App = props => (
