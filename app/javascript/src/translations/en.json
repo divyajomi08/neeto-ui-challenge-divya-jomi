@@ -5,7 +5,8 @@
     "edit": "Edit",
     "segments": "Segments",
     "tags": "Tags",
-    "notes": "Notes",
+    "note_one": "Note",
+    "note_other": "Notes",
     "gettingStarted": "Getting Started",
     "all": "All",
     "users": "Users",
@@ -31,5 +32,9 @@
       "finance": "Finance",
       "userExperience": "User Experience"
     }
+  },
+  "alerts": {
+    "deleteMessage": "Are you sure you want to delete {{item}} <bold>{{itemName}}</bold>? This action cannot be undone.",
+    "deleteTile": "Delete {{item}}"
   }
 }

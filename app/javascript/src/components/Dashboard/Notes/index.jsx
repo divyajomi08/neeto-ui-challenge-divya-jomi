@@ -6,6 +6,8 @@ import { Container, Header } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
+import DeleteAlert from "components/commons/DeleteAlert";
+import { PLURAL, SINGULAR } from "constants";
 
 import Collection from "./Collection";
 import { MAIN_BLOCKS, SEGMENT_BLOCKS, TAG_BLOCKS } from "./constants";
@@ -15,8 +17,11 @@ import MenuBar from "../../commons/MenuBar";
 const Notes = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [notes, setNotes] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [selectedNote, setSelectedNote] = useState({});
 
   const { t } = useTranslation();
 
@@ -31,6 +36,20 @@ const Notes = () => {
       logger.error(error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+      await notesApi.destroy({ ids: [selectedNote.id] });
+      setSelectedNote({});
+      fetchNotes();
+    } catch (error) {
+      logger.error(error);
+    } finally {
+      setIsDeleting(false);
+      setIsDeleteAlertOpen(false);
     }
   };
 
@@ -49,7 +68,7 @@ const Notes = () => {
         segmentBlocks={SEGMENT_BLOCKS}
         showMenu={isMenuOpen}
         tagBlocks={TAG_BLOCKS}
-        title={t("common.notes")}
+        title={t("common.note", PLURAL)}
       />
       <Container>
         <Header
@@ -64,7 +83,19 @@ const Notes = () => {
             onChange: e => setSearchTerm(e.target.value),
           }}
         />
-        <Collection notes={notes} />
+        <Collection
+          notes={notes}
+          setIsDeleteAlertOpen={setIsDeleteAlertOpen}
+          setSelectedNote={setSelectedNote}
+        />
+        <DeleteAlert
+          handleDelete={handleDelete}
+          isOpen={isDeleteAlertOpen}
+          isSubmitting={isDeleting}
+          item={t("common.note", SINGULAR)}
+          itemName={selectedNote.title}
+          onClose={() => setIsDeleteAlertOpen(false)}
+        />
       </Container>
     </>
   );
