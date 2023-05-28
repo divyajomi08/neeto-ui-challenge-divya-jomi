@@ -1,3 +1,7 @@
-import * as R from "ramda";
+import { complement, pipe, isEmpty, isNil, either, not } from "ramda";
 
-export const isPresent = R.pipe(R.either(R.isNil, R.isEmpty), R.not);
+export const isPresent = pipe(either(isNil, isEmpty), not);
+
+export const isNotPresent = complement(isPresent);
+
+export const noop = () => {};

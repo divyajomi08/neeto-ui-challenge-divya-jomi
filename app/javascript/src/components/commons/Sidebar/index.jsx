@@ -12,7 +12,7 @@ import {
 import { useAuthDispatch } from "contexts/auth";
 import { useUserState } from "contexts/user";
 
-import { APP_NAME, SIDENAV_LINKS } from "./constants";
+import { APP_NAME, SIDEBAR_NAV_LINKS } from "./constants";
 
 const Sidebar = () => {
   const history = useHistory();
@@ -47,8 +47,7 @@ const Sidebar = () => {
   return (
     <NeetoUISidebar
       appName={APP_NAME}
-      changelogProps={{ id: "neetochangelog-trigger" }}
-      navLinks={SIDENAV_LINKS}
+      navLinks={SIDEBAR_NAV_LINKS}
       organizationInfo={{
         name: "Wheel",
         subdomain: "bigbinary.com",

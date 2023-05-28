@@ -1,4 +1,4 @@
-import { Notes, Settings } from "neetoicons";
+import { Text, Settings } from "neetoicons";
 
 export const APP_NAME = "Wheel";
 
@@ -6,11 +6,11 @@ export const PASSWORD_PATH = "/my/password/edit";
 export const PROFILE_PATH = "/my/profile";
 export const LOGOUT_PATH = "/logout";
 
-export const SIDENAV_LINKS = [
+export const SIDEBAR_NAV_LINKS = [
   {
     label: "Notes",
     to: "/notes",
-    icon: Notes,
+    icon: Text,
   },
   {
     label: "Settings",

@@ -1,0 +1,35 @@
+{
+  "common": {
+    "elapsedTime": "Created {{time}}",
+    "delete": "Delete",
+    "edit": "Edit",
+    "segments": "Segments",
+    "tags": "Tags",
+    "notes": "Notes",
+    "gettingStarted": "Getting Started",
+    "all": "All",
+    "users": "Users",
+    "leads": "Leads",
+    "visitors": "Visitors"
+  },
+  "emptyState": {
+    "addNewNotes": "Add new note",
+    "addNotesDescription": "Add your notes to send customized emails to them.",
+    "emptyNotes": "Looks like you don't have any notes!"
+  },
+  "notes": {
+    "allNotes": "All Notes",
+    "addNote": "Add Note",
+    "searchNotes": "Search Name, Email, Phone Number, Etc.",
+    "segments": {
+      "europe": "Europe",
+      "middleEast": "Middle-East",
+      "asia": "Asia"
+    },
+    "tags": {
+      "sales": "Sales",
+      "finance": "Finance",
+      "userExperience": "User Experience"
+    }
+  }
+}
