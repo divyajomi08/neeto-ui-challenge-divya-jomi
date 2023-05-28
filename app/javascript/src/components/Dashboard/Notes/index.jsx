@@ -11,6 +11,7 @@ import { PLURAL, SINGULAR } from "constants";
 
 import Collection from "./Collection";
 import { MAIN_BLOCKS, SEGMENT_BLOCKS, TAG_BLOCKS } from "./constants";
+import NewNotePane from "./Pane/Create";
 
 import MenuBar from "../../commons/MenuBar";
 
@@ -19,6 +20,7 @@ const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [notes, setNotes] = useState([]);
+  const [isNewNotePaneOpen, setIsNewNotePaneOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [selectedNote, setSelectedNote] = useState({});
@@ -75,7 +77,12 @@ const Notes = () => {
           menuBarToggle={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)}
           title={t("notes.allNotes")}
           actionBlock={
-            <Button icon={Plus} label={t("notes.addNote")} size="small" />
+            <Button
+              icon={Plus}
+              label={t("notes.addNote")}
+              size="small"
+              onClick={() => setIsNewNotePaneOpen(true)}
+            />
           }
           searchProps={{
             placeholder: t("notes.searchNotes"),
@@ -87,6 +94,11 @@ const Notes = () => {
           notes={notes}
           setIsDeleteAlertOpen={setIsDeleteAlertOpen}
           setSelectedNote={setSelectedNote}
+        />
+        <NewNotePane
+          fetchNotes={fetchNotes}
+          setShowPane={setIsNewNotePaneOpen}
+          showPane={isNewNotePaneOpen}
         />
         <DeleteAlert
           handleDelete={handleDelete}

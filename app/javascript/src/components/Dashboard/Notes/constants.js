@@ -1,17 +1,13 @@
 import { t } from "i18next";
-import * as yup from "yup";
 
 const AVATAR_IMAGE_URL = "https://randomuser.me/api/portraits/women/90.jpg";
 
-export const NOTES_FORM_INITIAL_FORM_VALUES = {
+export const INITIAL_FORM_VALUES = {
   title: "",
   description: "",
+  role: "",
+  tags: [],
 };
-
-export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required("Title is required"),
-  description: yup.string().required("Description is required"),
-});
 
 export const SEGMENT_BLOCKS = [
   { count: 80, label: t("notes.segments.europe") },
