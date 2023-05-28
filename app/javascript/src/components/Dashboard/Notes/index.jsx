@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Button, PageLoader } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
+import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
 
@@ -20,6 +21,8 @@ const Notes = () => {
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchNotes();
@@ -54,16 +57,17 @@ const Notes = () => {
       <Container>
         <Header
           menuBarToggle={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)}
-          title="All Notes"
+          title={t("notes.allNotes")}
           actionBlock={
             <Button
               icon="ri-add-line"
-              label="Add new note"
+              label={t("notes.addNote")}
               size="small"
               onClick={() => setShowNewNotePane(true)}
             />
           }
           searchProps={{
+            placeholder: t("notes.searchNotes"),
             value: searchTerm,
             onChange: e => setSearchTerm(e.target.value),
           }}

@@ -1,0 +1,19 @@
+{
+  "common": {
+    "elapsedTime": "Created {{time}} ago",
+    "delete": "Delete",
+    "edit": "Edit",
+    "segments": "Segments",
+    "tags": "tags"
+  },
+  "emptyState": {
+    "addNewNotes": "Add new note",
+    "addNotesDescription": "Add your notes to send customized emails to them.",
+    "emptyNotes": "Looks like you don't have any notes!"
+  },
+  "notes": {
+    "allNotes": "All Notes",
+    "addNote": "Add Note",
+    "searchNotes": "Search Name, Email, Phone Number, Ect."
+  }
+}
