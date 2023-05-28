@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Table as NeetoUITable } from "neetoui";
 
-import { CONTACTS, TABLE_COLUMNS } from "../constants";
+import { CONTACTS, TABLE_COLUMNS } from "./constant";
 
 const Table = () => {
   const [selectedRows, setSelectedRows] = useState([]);

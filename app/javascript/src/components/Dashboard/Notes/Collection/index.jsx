@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { isNotPresent, noop } from "utils";
 
 import EmptyState from "components/commons/EmptyState";
+import { PLURAL, SINGULAR } from "constants";
 
 import Card from "./Card";
 
@@ -16,9 +17,15 @@ const Collection = ({ notes = [], setSelectedNote, setIsDeleteAlertOpen }) => {
       <EmptyState
         image={EmptyNotesListImage}
         primaryAction={noop}
-        primaryActionLabel={t("emptyState.addNewNotes")}
-        subtitle={t("emptyState.addNotesDescription")}
-        title={t("emptyState.emptyNotes")}
+        primaryActionLabel={t("emptyState.addNewItem", {
+          item: t("common.note", SINGULAR),
+        })}
+        subtitle={t("emptyState.addItemDescription", {
+          item: t("common.note", PLURAL).toLowerCase(),
+        })}
+        title={t("emptyState.message", {
+          item: t("common.note", PLURAL),
+        }).toLowerCase()}
       />
     );
   }

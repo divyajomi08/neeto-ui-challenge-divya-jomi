@@ -9,11 +9,10 @@ import { noop } from "utils";
 
 import EmptyState from "components/commons/EmptyState";
 import MenuBar from "components/commons/MenuBar";
-import { PLURAL } from "constants";
+import { PLURAL, SINGULAR } from "constants";
 
+import { CONTACTS, MAIN_BLOCKS } from "./constant";
 import ContactsTable from "./Table";
-
-import { CONTACTS, MAIN_BLOCKS } from "../constants";
 
 const Contacts = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -56,9 +55,15 @@ const Contacts = () => {
           <EmptyState
             image={EmptyNotesListImage}
             primaryAction={noop}
-            primaryActionLabel="Add New Contacts"
-            subtitle="Add your contacts to send customized emails to them."
-            title="Looks like you don't have any contacts!"
+            primaryActionLabel={t("emptyState.addNewItem", {
+              item: t("common.contact", SINGULAR),
+            })}
+            subtitle={t("emptyState.addItemDescription", {
+              item: t("common.contact", PLURAL).toLowerCase(),
+            })}
+            title={t("emptyState.message", {
+              item: t("common.contact", PLURAL).toLowerCase(),
+            })}
           />
         )}
       </Container>

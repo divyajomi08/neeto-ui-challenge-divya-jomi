@@ -15,15 +15,16 @@
     "title": "Title",
     "description": "Description",
     "assignedContact": "Assigned Contact",
-    "contacts": "Contacts",
+    "contact_one": "Contact",
+    "contact_other": "Contacts",
     "archived": "Archived",
     "completed": "Completed",
     "phase": "Phase 2"
   },
   "emptyState": {
-    "addNewNotes": "Add new note",
-    "addNotesDescription": "Add your notes to send customized emails to them.",
-    "emptyNotes": "Looks like you don't have any notes!"
+    "addNewItem": "Add New {{item}}",
+    "addItemDescription": "Add your {{item}} to send customized emails to them.",
+    "message": "Looks like you don't have any {{item}}!"
   },
   "notes": {
     "allNotes": "All Notes",

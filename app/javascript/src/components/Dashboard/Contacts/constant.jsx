@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from "react";
 
 import { t } from "i18next";
@@ -18,10 +17,10 @@ const generateAvatarImageUrl = () =>
 const User = ({ name, title }) => (
   <div className="cursor-default">
     <Typography style="h4" type="semibold">
-      {name ?? "No Name"}
+      {name}
     </Typography>
     <Typography className="cs-ui-text-shade-dark" style="body2">
-      {title ?? "No Role"}
+      {title}
     </Typography>
   </div>
 );
