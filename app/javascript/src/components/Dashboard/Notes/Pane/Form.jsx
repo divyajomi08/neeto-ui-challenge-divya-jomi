@@ -1,15 +1,19 @@
 import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
+import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Input, Select, Textarea } from "neetoui/formik";
 
 import notesApi from "apis/notes";
 
-import { NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
+import { NOTES_FORM_VALIDATION_SCHEMA, ROLES, TAGS } from "../constants";
 
 const Form = ({ onClose, refetch, note, isEdit }) => {
+  const { Footer, Body } = Pane;
+
   const handleSubmit = async values => {
+    if (isEdit) return;
     try {
       if (isEdit) {
         await notesApi.update(note.id, values);
@@ -17,9 +21,10 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
         await notesApi.create(values);
       }
       refetch();
-      onClose();
     } catch (err) {
       logger.error(err);
+    } finally {
+      onClose();
     }
   };
 
@@ -30,33 +35,49 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
-        <FormikForm className="w-full">
-          <Pane.Body className="space-y-6">
-            <Input
-              required
-              className="w-full flex-grow-0"
-              label="Title"
-              name="title"
-            />
-            <Textarea
-              required
-              className="w-full flex-grow-0"
-              label="Description"
-              name="description"
-              rows={8}
-            />
-          </Pane.Body>
-          <Pane.Footer>
+        <FormikForm className="flex flex-col justify-between">
+          <Body className="space-y-6">
+            <div className="w-full space-y-6">
+              <Input
+                required
+                label="Title"
+                name="title"
+                placeholder="Enter note title"
+              />
+              <Textarea
+                required
+                label="Description"
+                name="description"
+                placeholder="Enter note description"
+                rows={1}
+              />
+              <Select
+                required
+                label="Assigned Contact"
+                name="role"
+                options={ROLES}
+                placeholder="Select Role"
+              />
+              <Select
+                isMulti
+                required
+                label="Tag"
+                name="tags"
+                options={TAGS}
+                placeholder="Select Tags"
+              />
+            </div>
+          </Body>
+          <Footer className="space-x-2">
             <Button
-              className="mr-3"
               disabled={isSubmitting}
-              label={isEdit ? "Update" : "Save changes"}
+              icon={Check}
+              label="Save Changes"
               loading={isSubmitting}
-              style="primary"
               type="submit"
             />
-            <Button label="Cancel" style="text" onClick={onClose} />
-          </Pane.Footer>
+            <Button label="Cancel" style="secondary" onClick={onClose} />
+          </Footer>
         </FormikForm>
       )}
     </Formik>

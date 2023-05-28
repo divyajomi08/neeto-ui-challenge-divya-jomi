@@ -6,12 +6,49 @@ const AVATAR_IMAGE_URL = "https://randomuser.me/api/portraits/women/90.jpg";
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
+  role: "",
+  tags: [],
 };
 
-export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required("Title is required"),
-  description: yup.string().required("Description is required"),
+export const NOTES_FORM_VALIDATION_SCHEMA = yup.object({
+  title: yup.string().required(t("validation.title")),
+  description: yup.string().required(t("validation.description")),
+  role: yup.object().required(t("validation.role")),
+  tags: yup.array().min(1, t("validation.tag")).required(t("validation.tag")),
 });
+
+export const TAGS = [
+  {
+    label: "Getting Started",
+    value: "gettingStarted",
+  },
+  {
+    label: "Onboarding",
+    value: "Onboarding",
+  },
+  {
+    label: "User Flow",
+    value: "userFlow",
+  },
+  {
+    label: "UX",
+    value: "ux",
+  },
+  {
+    label: "Bugs",
+    value: "bugs",
+  },
+  {
+    label: "V2",
+    value: "v2",
+  },
+];
+
+export const ROLES = [
+  { label: "Oliver Smith", value: "523621a4-ac39-48e5-8d86-eba9310d2055" },
+  { label: "Eve Smith", value: "523621a4-ac39-48e5-8d86-eba9310d5098" },
+  { label: "Sam Smith", value: "523621a4-ac39-48e5-8d86-eba9310d5685" },
+];
 
 export const SEGMENT_BLOCKS = [
   { count: 80, label: t("notes.segments.europe") },

@@ -21,6 +21,7 @@
   "notes": {
     "allNotes": "All Notes",
     "addNote": "Add Note",
+    "addNewNote": "Add New Note",
     "searchNotes": "Search Name, Email, Phone Number, Etc.",
     "segments": {
       "europe": "Europe",
@@ -36,5 +37,11 @@
   "alerts": {
     "deleteMessage": "Are you sure you want to delete {{item}} <bold>{{itemName}}</bold>? This action cannot be undone.",
     "deleteTile": "Delete {{item}}"
+  },
+  "validation": {
+    "title": "Title is required",
+    "description": "Description is required",
+    "role": "Role is required",
+    "tag": "Tags field must have at least 1 item"
   }
 }

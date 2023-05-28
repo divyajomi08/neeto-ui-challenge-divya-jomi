@@ -1,21 +1,26 @@
 import React from "react";
 
 import { Pane, Typography } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import Form from "./Form";
 
 import { NOTES_FORM_INITIAL_FORM_VALUES } from "../constants";
 
-const Create = ({ fetchNotes, showPane, setShowPane }) => {
+export const Create = ({ fetchNotes, showPane, setShowPane }) => {
+  const { t } = useTranslation();
+
   const onClose = () => setShowPane(false);
+
+  const { Header } = Pane;
 
   return (
     <Pane isOpen={showPane} onClose={onClose}>
-      <Pane.Header>
+      <Header>
         <Typography style="h2" weight="semibold">
-          Create a new note
+          {t("notes.addNewNote")}
         </Typography>
-      </Pane.Header>
+      </Header>
       <Form
         isEdit={false}
         note={NOTES_FORM_INITIAL_FORM_VALUES}
