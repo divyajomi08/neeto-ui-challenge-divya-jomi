@@ -24,3 +24,46 @@ export const NOTES_TABLE_COLUMN_DATA = [
     width: "70%",
   },
 ];
+
+export const SEGMENT_BLOCKS = [
+  { count: 80, label: "Europe" },
+  { count: 60, label: "Middle-East" },
+  { count: 60, label: "Asia" },
+];
+
+export const TAG_BLOCKS = [
+  { count: 80, label: "Sales" },
+  { count: 60, label: "Finance" },
+  { count: 60, label: "User Experience" },
+];
+
+export const MAIN_BLOCKS = [
+  { isActive: true, count: 200, label: "All" },
+  { isActive: false, count: 80, label: "Users" },
+  { isActive: false, count: 60, label: "Leads" },
+  { isActive: false, count: 60, label: "Visitors" },
+];
+
+export const NOTES = [
+  {
+    title: "How to claim the warranty?",
+    description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
+    assignedContact: "Role1",
+    tags: ["Getting Started"],
+  },
+  {
+    title: "How to claim the warranty?",
+    description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
+    assignedContact: "Role1",
+    tags: ["Getting Started"],
+  },
+  {
+    title: "How to claim the warranty?",
+    description: `"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting`,
+    assignedContact: "Role1",
+    tags: ["Getting Started"],
+  },
+];
+
+export const AVATAR_IMAGE_URL =
+  "https://randomuser.me/api/portraits/women/90.jpg";

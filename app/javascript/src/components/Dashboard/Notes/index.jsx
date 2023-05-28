@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 
-import EmptyNotesListImage from "images/EmptyNotesList";
-import { Delete } from "neetoicons";
 import { Button, PageLoader } from "neetoui";
-import { Container, Header, SubHeader } from "neetoui/layouts";
+import { Container, Header } from "neetoui/layouts";
 
 import notesApi from "apis/notes";
-import EmptyState from "components/commons/EmptyState";
 
+import Collection from "./Collection";
+import { MAIN_BLOCKS, SEGMENT_BLOCKS, TAG_BLOCKS } from "./constants";
 import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./Pane/Create";
-import Table from "./Table";
+
+import MenuBar from "../MenuBar";
 
 const Notes = () => {
   const [loading, setLoading] = useState(true);
@@ -19,6 +19,7 @@ const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState([]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     fetchNotes();
@@ -43,65 +44,46 @@ const Notes = () => {
   }
 
   return (
-    <Container>
-      <Header
-        title="Notes"
-        actionBlock={
-          <Button
-            icon="ri-add-line"
-            label="Add new note"
-            size="small"
-            onClick={() => setShowNewNotePane(true)}
-          />
-        }
-        searchProps={{
-          value: searchTerm,
-          onChange: e => setSearchTerm(e.target.value),
-        }}
+    <>
+      <MenuBar
+        mainBlocks={MAIN_BLOCKS}
+        segmentBlocks={SEGMENT_BLOCKS}
+        showMenu={isMenuOpen}
+        tagBlocks={TAG_BLOCKS}
       />
-      {notes.length ? (
-        <>
-          <SubHeader
-            rightActionBlock={
-              <Button
-                disabled={!selectedNoteIds.length}
-                icon={Delete}
-                label="Delete"
-                size="small"
-                onClick={() => setShowDeleteAlert(true)}
-              />
-            }
-          />
-          <Table
-            fetchNotes={fetchNotes}
-            notes={notes}
+      <Container>
+        <Header
+          menuBarToggle={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)}
+          title="All Notes"
+          actionBlock={
+            <Button
+              icon="ri-add-line"
+              label="Add new note"
+              size="small"
+              onClick={() => setShowNewNotePane(true)}
+            />
+          }
+          searchProps={{
+            value: searchTerm,
+            onChange: e => setSearchTerm(e.target.value),
+          }}
+        />
+        <Collection notes={notes} setShowNewNotePane={setShowNewNotePane} />
+        <NewNotePane
+          fetchNotes={fetchNotes}
+          setShowPane={setShowNewNotePane}
+          showPane={showNewNotePane}
+        />
+        {showDeleteAlert && (
+          <DeleteAlert
+            refetch={fetchNotes}
             selectedNoteIds={selectedNoteIds}
             setSelectedNoteIds={setSelectedNoteIds}
+            onClose={() => setShowDeleteAlert(false)}
           />
-        </>
-      ) : (
-        <EmptyState
-          image={EmptyNotesListImage}
-          primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel="Add new note"
-          subtitle="Add your notes to send customized emails to them."
-          title="Looks like you don't have any notes!"
-        />
-      )}
-      <NewNotePane
-        fetchNotes={fetchNotes}
-        setShowPane={setShowNewNotePane}
-        showPane={showNewNotePane}
-      />
-      {showDeleteAlert && (
-        <DeleteAlert
-          refetch={fetchNotes}
-          selectedNoteIds={selectedNoteIds}
-          setSelectedNoteIds={setSelectedNoteIds}
-          onClose={() => setShowDeleteAlert(false)}
-        />
-      )}
-    </Container>
+        )}
+      </Container>
+    </>
   );
 };
 
