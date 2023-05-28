@@ -14,7 +14,11 @@
     "visitors": "Visitors",
     "title": "Title",
     "description": "Description",
-    "assignedContact": "Assigned Contact"
+    "assignedContact": "Assigned Contact",
+    "contacts": "Contacts",
+    "archived": "Archived",
+    "completed": "Completed",
+    "phase": "Phase 2"
   },
   "emptyState": {
     "addNewNotes": "Add new note",
@@ -25,7 +29,6 @@
     "allNotes": "All Notes",
     "addNote": "Add Note",
     "addNewNote": "Add New Note",
-    "searchNotes": "Search Name, Email, Phone Number, Etc.",
     "segments": {
       "europe": "Europe",
       "middleEast": "Middle-East",
@@ -55,6 +58,11 @@
     "title": "Enter note title",
     "description": "Enter note description",
     "assignedContact": "Select Contact",
-    "tags": "Select Tags"
+    "tags": "Select Tags",
+    "search": "Search Name, Email, Phone Number, Etc."
+  },
+  "contacts": {
+    "addContacts": "Add Contact",
+    "allContacts": "All Contacts"
   }
 }
