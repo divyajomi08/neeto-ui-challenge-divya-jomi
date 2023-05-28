@@ -11,8 +11,9 @@ import EmptyState from "components/commons/EmptyState";
 import MenuBar from "components/commons/MenuBar";
 import { PLURAL } from "constants";
 
-import { CONTACTS, MAIN_BLOCKS } from "./constants";
 import ContactsTable from "./Table";
+
+import { CONTACTS, MAIN_BLOCKS } from "../constants";
 
 const Contacts = () => {
   const [searchTerm, setSearchTerm] = useState("");
