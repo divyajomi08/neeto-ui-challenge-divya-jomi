@@ -20,7 +20,7 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object({
 export const TAGS = [
   {
     label: "Getting Started",
-    value: "gettingStarted",
+    value: "getting_started",
   },
   {
     label: "Onboarding",
@@ -28,7 +28,7 @@ export const TAGS = [
   },
   {
     label: "User Flow",
-    value: "userFlow",
+    value: "user_flow",
   },
   {
     label: "UX",
