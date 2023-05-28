@@ -101,5 +101,5 @@ group :test do
   gem "minitest-ci"
 
   # Check semaphore config - this gem only relevant in semaphoreCI
-  gem "ffi", submodules: true
+  gem "ffi", github: "ffi/ffi", submodules: true
 end

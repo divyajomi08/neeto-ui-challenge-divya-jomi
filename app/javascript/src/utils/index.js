@@ -1,13 +1,7 @@
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import updateLocale from "dayjs/plugin/updateLocale";
-import * as R from "ramda";
+import { complement, pipe, isEmpty, isNil, either, not } from "ramda";
 
-dayjs.extend(relativeTime);
-dayjs.extend(updateLocale);
+export const isPresent = pipe(either(isNil, isEmpty), not);
 
-export const isPresent = R.pipe(R.either(R.isNil, R.isEmpty), R.not);
+export const isNotPresent = complement(isPresent);
 
-export const elapsedTime = date => dayjs(date).fromNow();
-
-export const dateWeekTime = date => dayjs(date).format("dddd, h:mmA");
+export const noop = () => {};

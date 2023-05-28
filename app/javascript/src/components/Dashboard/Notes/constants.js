@@ -1,4 +1,7 @@
+import { t } from "i18next";
 import * as yup from "yup";
+
+const AVATAR_IMAGE_URL = "https://randomuser.me/api/portraits/women/90.jpg";
 
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
@@ -10,39 +13,26 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
   description: yup.string().required("Description is required"),
 });
 
-export const NOTES_TABLE_COLUMN_DATA = [
-  {
-    title: "Title",
-    dataIndex: "title",
-    key: "title",
-    width: "30%",
-  },
-  {
-    title: "Description",
-    dataIndex: "description",
-    key: "description",
-    width: "70%",
-  },
-];
-
 export const SEGMENT_BLOCKS = [
-  { count: 80, label: "Europe" },
-  { count: 60, label: "Middle-East" },
-  { count: 60, label: "Asia" },
+  { count: 80, label: t("notes.segments.europe") },
+  { count: 60, label: t("notes.segments.middleEast") },
+  { count: 60, label: t("notes.segments.asia") },
 ];
 
 export const TAG_BLOCKS = [
-  { count: 80, label: "Sales" },
-  { count: 60, label: "Finance" },
-  { count: 60, label: "User Experience" },
+  { count: 80, label: t("notes.tags.sales") },
+  { count: 60, label: t("notes.tags.finance") },
+  { count: 60, label: t("notes.tags.userExperience") },
 ];
 
 export const MAIN_BLOCKS = [
-  { isActive: true, count: 200, label: "All" },
-  { isActive: false, count: 80, label: "Users" },
-  { isActive: false, count: 60, label: "Leads" },
-  { isActive: false, count: 60, label: "Visitors" },
+  { isActive: true, count: 200, label: t("common.all") },
+  { isActive: false, count: 80, label: t("common.users") },
+  { isActive: false, count: 60, label: t("common.leads") },
+  { isActive: false, count: 60, label: t("common.visitors") },
 ];
 
-export const AVATAR_IMAGE_URL =
-  "https://randomuser.me/api/portraits/women/90.jpg";
+export const DEFAULT_USER_AVATAR = {
+  imageUrl: AVATAR_IMAGE_URL,
+  name: "avatar",
+};

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import { Plus } from "neetoicons";
 import { Button, PageLoader } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
@@ -8,29 +9,20 @@ import notesApi from "apis/notes";
 
 import Collection from "./Collection";
 import { MAIN_BLOCKS, SEGMENT_BLOCKS, TAG_BLOCKS } from "./constants";
-import DeleteAlert from "./DeleteAlert";
-import NewNotePane from "./Pane/Create";
 
-import MenuBar from "../MenuBar";
+import MenuBar from "../../commons/MenuBar";
 
 const Notes = () => {
-  const [loading, setLoading] = useState(true);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { t } = useTranslation();
 
-  useEffect(() => {
-    fetchNotes();
-  }, []);
-
   const fetchNotes = async () => {
     try {
-      setLoading(true);
+      setIsLoading(true);
       const {
         data: { notes },
       } = await notesApi.fetch();
@@ -38,11 +30,15 @@ const Notes = () => {
     } catch (error) {
       logger.error(error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
-  if (loading) {
+  useEffect(() => {
+    fetchNotes();
+  }, []);
+
+  if (isLoading) {
     return <PageLoader />;
   }
 
@@ -59,12 +55,7 @@ const Notes = () => {
           menuBarToggle={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)}
           title={t("notes.allNotes")}
           actionBlock={
-            <Button
-              icon="ri-add-line"
-              label={t("notes.addNote")}
-              size="small"
-              onClick={() => setShowNewNotePane(true)}
-            />
+            <Button icon={Plus} label={t("notes.addNote")} size="small" />
           }
           searchProps={{
             placeholder: t("notes.searchNotes"),
@@ -72,20 +63,7 @@ const Notes = () => {
             onChange: e => setSearchTerm(e.target.value),
           }}
         />
-        <Collection notes={notes} setShowNewNotePane={setShowNewNotePane} />
-        <NewNotePane
-          fetchNotes={fetchNotes}
-          setShowPane={setShowNewNotePane}
-          showPane={showNewNotePane}
-        />
-        {showDeleteAlert && (
-          <DeleteAlert
-            refetch={fetchNotes}
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
-            onClose={() => setShowDeleteAlert(false)}
-          />
-        )}
+        <Collection notes={notes} />
       </Container>
     </>
   );

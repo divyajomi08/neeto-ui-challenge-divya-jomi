@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-import { Plus, Search, Settings } from "neetoicons";
+import { Search } from "neetoicons";
 import { Typography } from "neetoui";
 import { MenuBar as NeetoUIMenuBar } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 import { v4 as uuid } from "uuid";
+
+import { TAG_ICONS } from "./constants";
 
 const MenuBar = ({ showMenu, mainBlocks, segmentBlocks, tagBlocks }) => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
@@ -13,7 +15,7 @@ const MenuBar = ({ showMenu, mainBlocks, segmentBlocks, tagBlocks }) => {
 
   return (
     <div className="flex">
-      <NeetoUIMenuBar showMenu={showMenu} title="Notes">
+      <NeetoUIMenuBar showMenu={showMenu} title={t("common.notes")}>
         {mainBlocks.map(({ label, isActive, count }) => (
           <NeetoUIMenuBar.Block
             active={isActive}
@@ -26,7 +28,8 @@ const MenuBar = ({ showMenu, mainBlocks, segmentBlocks, tagBlocks }) => {
           iconProps={[
             {
               icon: Search,
-              onClick: () => setIsSearchCollapsed(!isSearchCollapsed),
+              onClick: () =>
+                setIsSearchCollapsed(isSearchCollapsed => !isSearchCollapsed),
             },
           ]}
         >
@@ -46,19 +49,7 @@ const MenuBar = ({ showMenu, mainBlocks, segmentBlocks, tagBlocks }) => {
         {segmentBlocks.map(({ label, count }) => (
           <NeetoUIMenuBar.Block count={count} key={uuid()} label={label} />
         ))}
-        <NeetoUIMenuBar.SubTitle
-          iconProps={[
-            {
-              icon: Search,
-            },
-            {
-              icon: Plus,
-            },
-            {
-              icon: Settings,
-            },
-          ]}
-        >
+        <NeetoUIMenuBar.SubTitle iconProps={TAG_ICONS}>
           <Typography
             component="h4"
             style="h5"

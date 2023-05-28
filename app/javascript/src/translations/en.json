@@ -1,10 +1,16 @@
 {
   "common": {
-    "elapsedTime": "Created {{time}} ago",
+    "elapsedTime": "Created {{time}}",
     "delete": "Delete",
     "edit": "Edit",
     "segments": "Segments",
-    "tags": "tags"
+    "tags": "Tags",
+    "notes": "Notes",
+    "gettingStarted": "Getting Started",
+    "all": "All",
+    "users": "Users",
+    "leads": "Leads",
+    "visitors": "Visitors"
   },
   "emptyState": {
     "addNewNotes": "Add new note",
@@ -14,6 +20,16 @@
   "notes": {
     "allNotes": "All Notes",
     "addNote": "Add Note",
-    "searchNotes": "Search Name, Email, Phone Number, Ect."
+    "searchNotes": "Search Name, Email, Phone Number, Etc.",
+    "segments": {
+      "europe": "Europe",
+      "middleEast": "Middle-East",
+      "asia": "Asia"
+    },
+    "tags": {
+      "sales": "Sales",
+      "finance": "Finance",
+      "userExperience": "User Experience"
+    }
   }
 }
