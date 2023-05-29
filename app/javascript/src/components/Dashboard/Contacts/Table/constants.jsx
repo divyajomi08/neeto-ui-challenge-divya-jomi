@@ -3,6 +3,7 @@ import React from "react";
 import { t } from "i18next";
 import { MenuHorizontal } from "neetoicons";
 import { Avatar, Dropdown } from "neetoui";
+import { getFullName } from "utils";
 
 import Profile from "./Profile";
 
@@ -24,10 +25,13 @@ export const COLUMN_DATA = [
           size="large"
           user={{
             imageUrl: row.profileImageUrl,
-            name: row.name,
+            name: getFullName(row.firstName, row.lastName),
           }}
         />
-        <Profile name={row.name} title={row.role} />
+        <Profile
+          name={getFullName(row.firstName, row.lastName)}
+          title={row.role}
+        />
       </div>
     ),
   },
