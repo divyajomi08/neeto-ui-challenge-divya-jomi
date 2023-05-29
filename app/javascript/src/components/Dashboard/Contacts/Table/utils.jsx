@@ -12,13 +12,10 @@ const {
   MenuItem: { Button },
 } = Dropdown;
 
-export const CURRENT_PAGE_NUMBER = 1;
-export const DEFAULT_PAGE_SIZE = 10;
-
-export const COLUMN_DATA = handleDelete => [
+export const getColumnData = handleDelete => [
   {
     key: "name",
-    title: "Name & Role",
+    title: t("common.nameAndRole"),
     render: row => (
       <div className="flex items-center space-x-3">
         <Avatar
@@ -38,12 +35,12 @@ export const COLUMN_DATA = handleDelete => [
   {
     dataIndex: "email",
     key: "email",
-    title: "Email",
+    title: t("common.email"),
   },
   {
     dataIndex: "createdAt",
     key: "createdAt",
-    title: "Created At",
+    title: t("common.createdAt"),
   },
   {
     key: "action",

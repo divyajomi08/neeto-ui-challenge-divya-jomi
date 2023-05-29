@@ -24,7 +24,10 @@
     "lastName": "Last Name",
     "emailAddress": "Email Address",
     "role": "Role",
-    "settings": "Settings"
+    "settings": "Settings",
+    "createdAt": "Created At",
+    "nameAndRole": "Name & Role",
+    "email": "Email"
   },
   "emptyState": {
     "notes": {
