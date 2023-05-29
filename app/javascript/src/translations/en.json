@@ -68,7 +68,8 @@
     "firstName": "First name is required",
     "lastName": "Last name is required",
     "email": "Email address is required",
-    "validEmail": "Enter valid email"
+    "validEmail": "Enter valid email",
+    "contact": "Assigned contact is required"
   },
   "button": {
     "save": "Save Changes",

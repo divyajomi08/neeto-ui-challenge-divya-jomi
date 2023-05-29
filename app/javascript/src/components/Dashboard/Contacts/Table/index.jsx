@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Table as NeetoUITable } from "neetoui";
 
-import { getColumnData } from "./utils";
+import { buildColumnData } from "./utils";
 
 import { DEFAULT_PAGE_SIZE } from "../constants";
 
@@ -14,13 +14,13 @@ const Table = ({ contacts = [], handleDelete }) => {
       <NeetoUITable
         fixedHeight
         rowSelection
-        columnData={getColumnData(handleDelete)}
+        columnData={buildColumnData(handleDelete)}
         defaultPageSize={DEFAULT_PAGE_SIZE}
         rowData={contacts}
         selectedRowKeys={selectedRows}
         shouldDynamicallyRenderRowSize={false}
         totalCount={contacts.length}
-        onRowSelect={selectedRowKeys => setSelectedRows(selectedRowKeys)}
+        onRowSelect={setSelectedRows}
       />
     </div>
   );

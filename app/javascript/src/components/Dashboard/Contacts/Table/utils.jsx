@@ -12,7 +12,7 @@ const {
   MenuItem: { Button },
 } = Dropdown;
 
-export const getColumnData = handleDelete => [
+export const buildColumnData = handleDelete => [
   {
     key: "name",
     title: t("common.nameAndRole"),
@@ -22,12 +22,18 @@ export const getColumnData = handleDelete => [
           size="large"
           user={{
             imageUrl: row.profileImageUrl,
-            name: getFullName(row.firstName, row.lastName),
+            name: getFullName({
+              firstName: row.firstName,
+              lastName: row.lastName,
+            }),
           }}
         />
         <Profile
-          name={getFullName(row.firstName, row.lastName)}
           title={row.role}
+          name={getFullName({
+            firstName: row.firstName,
+            lastName: row.lastName,
+          })}
         />
       </div>
     ),

@@ -7,9 +7,9 @@ import Form from "./Form";
 
 import { INITIAL_FORM_VALUES } from "../constants";
 
-export const Create = ({ fetchNotes, showPane, setShowPane }) => {
-  const { Header } = Pane;
+const { Header } = Pane;
 
+export const Create = ({ fetchNotes, showPane, setShowPane }) => {
   const { t } = useTranslation();
 
   const onClose = () => setShowPane(false);

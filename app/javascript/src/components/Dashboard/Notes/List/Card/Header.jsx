@@ -4,6 +4,11 @@ import { MenuVertical } from "neetoicons";
 import { Dropdown, Typography } from "neetoui";
 import { useTranslation } from "react-i18next";
 
+const {
+  Menu,
+  MenuItem: { Button },
+} = Dropdown;
+
 const Header = ({ note, setSelectedNote, setIsDeleteAlertOpen }) => {
   const { t } = useTranslation();
 
@@ -13,11 +18,6 @@ const Header = ({ note, setSelectedNote, setIsDeleteAlertOpen }) => {
     setSelectedNote(note);
     setIsDeleteAlertOpen(true);
   };
-
-  const {
-    Menu,
-    MenuItem: { Button },
-  } = Dropdown;
 
   return (
     <div className="flex justify-between gap-4">

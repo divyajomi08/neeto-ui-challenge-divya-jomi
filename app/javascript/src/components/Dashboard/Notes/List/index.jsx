@@ -8,7 +8,7 @@ import EmptyState from "components/commons/EmptyState";
 
 import Card from "./Card";
 
-const Collection = ({ notes = [], setSelectedNote, setIsDeleteAlertOpen }) => {
+const List = ({ notes = [], setSelectedNote, setIsDeleteAlertOpen }) => {
   const { t } = useTranslation();
 
   if (isNotPresent(notes)) {
@@ -37,4 +37,4 @@ const Collection = ({ notes = [], setSelectedNote, setIsDeleteAlertOpen }) => {
   );
 };
 
-export default Collection;
+export default List;

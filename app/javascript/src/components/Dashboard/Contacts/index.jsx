@@ -26,10 +26,10 @@ const Contacts = () => {
 
   const { t } = useTranslation();
 
-  const fullName = getFullName(
-    selectedContact.firstName,
-    selectedContact.lastName
-  );
+  const fullName = getFullName({
+    firstName: selectedContact.firstName,
+    lastName: selectedContact.lastName,
+  });
 
   const handleDelete = () => {
     const filteredContacts = contacts.filter(

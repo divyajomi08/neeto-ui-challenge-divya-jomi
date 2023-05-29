@@ -8,11 +8,11 @@ import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
 
-import { VALIDATION_SCHEMA, ROLES, TAGS } from "./constants";
+import { VALIDATION_SCHEMA, TAGS, CONTACTS } from "./constants";
+
+const { Footer, Body } = Pane;
 
 const Form = ({ onClose, refetch, note, isEdit }) => {
-  const { Footer, Body } = Pane;
-
   const { t } = useTranslation();
 
   const handleSubmit = async values => {
@@ -56,8 +56,8 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               <Select
                 required
                 label={t("common.assignedContact")}
-                name="role"
-                options={ROLES}
+                name="contact"
+                options={CONTACTS}
                 placeholder={t("placeholder.assignedContact")}
               />
               <Select

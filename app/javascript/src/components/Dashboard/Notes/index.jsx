@@ -9,8 +9,8 @@ import notesApi from "apis/notes";
 import DeleteAlert from "components/commons/DeleteAlert";
 import { PLURAL, SINGULAR } from "constants";
 
-import Collection from "./Collection";
 import { MAIN_BLOCKS, SEGMENT_BLOCKS, TAG_BLOCKS } from "./constants";
+import List from "./List";
 import NewNotePane from "./Pane/Create";
 
 import MenuBar from "../../commons/MenuBar";
@@ -90,7 +90,7 @@ const Notes = () => {
             onChange: e => setSearchTerm(e.target.value),
           }}
         />
-        <Collection
+        <List
           notes={notes}
           setIsDeleteAlertOpen={setIsDeleteAlertOpen}
           setSelectedNote={setSelectedNote}
