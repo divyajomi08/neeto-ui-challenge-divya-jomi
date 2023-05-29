@@ -10,9 +10,9 @@ import notesApi from "apis/notes";
 
 import { VALIDATION_SCHEMA, ROLES, TAGS } from "./constants";
 
-const Form = ({ onClose, refetch, note, isEdit }) => {
-  const { Footer, Body } = Pane;
+const { Footer, Body } = Pane;
 
+const Form = ({ onClose, refetch, note, isEdit }) => {
   const { t } = useTranslation();
 
   const handleSubmit = async values => {

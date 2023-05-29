@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import { Search } from "neetoicons";
 import { Typography } from "neetoui";
 import { MenuBar as NeetoUIMenuBar } from "neetoui/layouts";
 import PropTypes from "prop-types";
@@ -8,6 +7,8 @@ import { useTranslation } from "react-i18next";
 import { v4 as uuid } from "uuid";
 
 import { TAG_ICONS } from "./constants";
+
+const { Block, SubTitle, Search } = NeetoUIMenuBar;
 
 const MenuBar = ({
   showMenu = false,
@@ -24,14 +25,9 @@ const MenuBar = ({
     <div className="flex">
       <NeetoUIMenuBar showMenu={showMenu} title={title}>
         {mainBlocks.map(({ label, isActive, count }) => (
-          <NeetoUIMenuBar.Block
-            active={isActive}
-            count={count}
-            key={uuid()}
-            label={label}
-          />
+          <Block active={isActive} count={count} key={uuid()} label={label} />
         ))}
-        <NeetoUIMenuBar.SubTitle
+        <SubTitle
           iconProps={[
             {
               icon: Search,
@@ -48,15 +44,15 @@ const MenuBar = ({
           >
             {t("common.segments")}
           </Typography>
-        </NeetoUIMenuBar.SubTitle>
-        <NeetoUIMenuBar.Search
+        </SubTitle>
+        <Search
           collapse={isSearchCollapsed}
           onCollapse={() => setIsSearchCollapsed(true)}
         />
         {segmentBlocks.map(({ label, count }) => (
-          <NeetoUIMenuBar.Block count={count} key={uuid()} label={label} />
+          <Block count={count} key={uuid()} label={label} />
         ))}
-        <NeetoUIMenuBar.SubTitle iconProps={TAG_ICONS}>
+        <SubTitle iconProps={TAG_ICONS}>
           <Typography
             component="h4"
             style="h5"
@@ -65,9 +61,9 @@ const MenuBar = ({
           >
             {t("common.tags")}
           </Typography>
-        </NeetoUIMenuBar.SubTitle>
+        </SubTitle>
         {tagBlocks.map(({ label, count }) => (
-          <NeetoUIMenuBar.Block count={count} key={uuid()} label={label} />
+          <Block count={count} key={uuid()} label={label} />
         ))}
       </NeetoUIMenuBar>
     </div>

@@ -7,10 +7,10 @@ import Form from "./Form";
 
 import { INITIAL_FORM_VALUES } from "../constants";
 
+const { Header } = Pane;
+
 const Create = ({ showPane, setContacts, onClose }) => {
   const { t } = useTranslation();
-
-  const { Header } = Pane;
 
   return (
     <Pane isOpen={showPane} onClose={onClose}>

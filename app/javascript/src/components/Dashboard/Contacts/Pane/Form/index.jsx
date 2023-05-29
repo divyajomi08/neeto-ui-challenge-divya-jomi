@@ -11,10 +11,10 @@ import { v4 as uuid } from "uuid";
 
 import { ROLES, VALIDATION_SCHEMA } from "./constants";
 
+const { Body, Footer } = Pane;
+
 const Form = ({ initialValues, setContacts, onClose }) => {
   const { t } = useTranslation();
-
-  const { Body, Footer } = Pane;
 
   const handleSubmit = values => {
     const newContact = mergeLeft(
