@@ -12,11 +12,14 @@ import MenuBar from "components/commons/MenuBar";
 import { PLURAL } from "constants";
 
 import { MAIN_BLOCKS, ROW_DATA } from "./constants";
+import NewContactPane from "./Pane/Create";
 import ContactsTable from "./Table";
 
 const Contacts = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNewContactPaneOpen, setIsNewContactPaneOpen] = useState(false);
+  const [contacts, setContacts] = useState(ROW_DATA);
 
   const { t } = useTranslation();
 
@@ -32,7 +35,12 @@ const Contacts = () => {
           menuBarToggle={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)}
           title={t("contacts.allContacts")}
           actionBlock={
-            <Button icon={Plus} label={t("contacts.addContact")} size="small" />
+            <Button
+              icon={Plus}
+              label={t("contacts.addContact")}
+              size="small"
+              onClick={() => setIsNewContactPaneOpen(true)}
+            />
           }
           searchProps={{
             placeholder: t("placeholder.search"),
@@ -40,8 +48,8 @@ const Contacts = () => {
             onChange: e => setSearchTerm(e.target.value),
           }}
         />
-        {ROW_DATA.length ? (
-          <ContactsTable contacts={ROW_DATA} />
+        {contacts.length ? (
+          <ContactsTable contacts={contacts} />
         ) : (
           <EmptyState
             image={EmptyNotesListImage}
@@ -51,6 +59,11 @@ const Contacts = () => {
             title={t("emptyState.contacts.message")}
           />
         )}
+        <NewContactPane
+          setContacts={setContacts}
+          showPane={isNewContactPaneOpen}
+          onClose={() => setIsNewContactPaneOpen(false)}
+        />
       </Container>
     </>
   );
