@@ -3,7 +3,7 @@ import { isEven } from "utils";
 
 const PROFILE_IMAGE_URL = `https://picsum.photos/300`;
 
-export const ROW_DATA = Array.from({ length: 11 }, (_, index) => ({
+export const ROW_DATA = Array.from({ length: 14 }, (_, index) => ({
   id: index + 1,
   firstName: isEven(index) ? "Jacob" : "Ronald",
   lastName: isEven(index) ? "Jones" : "Richards",

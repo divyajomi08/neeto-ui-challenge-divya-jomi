@@ -1,19 +1,22 @@
 import React from "react";
 
 import { Pane, Typography } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import Form from "./Form";
 
 import { INITIAL_FORM_VALUES } from "../constants";
 
 const Create = ({ showPane, setContacts, onClose }) => {
+  const { t } = useTranslation();
+
   const { Header } = Pane;
 
   return (
     <Pane isOpen={showPane} onClose={onClose}>
       <Header>
         <Typography style="h2" weight="semibold">
-          Add New Contact
+          {t("contacts.addNewContact")}
         </Typography>
       </Header>
       <Form

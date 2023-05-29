@@ -1,6 +1,5 @@
 import React from "react";
 
-import dayjs from "dayjs";
 import { t } from "i18next";
 import { MenuHorizontal } from "neetoicons";
 import { Avatar, Dropdown } from "neetoui";
@@ -45,8 +44,6 @@ export const COLUMN_DATA = [
     dataIndex: "createdAt",
     key: "createdAt",
     title: "Created At",
-    render: createdAt =>
-      createdAt ?? dayjs(new Date()).locale("en").format("MMM D, YYYY"),
   },
   {
     dataIndex: "action",

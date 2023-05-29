@@ -1,13 +1,14 @@
+import { t } from "i18next";
 import * as yup from "yup";
 
 export const VALIDATION_SCHEMA = yup.object({
-  firstName: yup.string().required("First Name is required"),
-  lastName: yup.string().required("Last Name is required"),
+  firstName: yup.string().required(t("validation.firstName")),
+  lastName: yup.string().required(t("validation.lastName")),
   email: yup
     .string()
-    .email("Enter valid email")
-    .required("Email address is required"),
-  role: yup.object().required("Role is required"),
+    .email(t("validation.validEmail"))
+    .required(t("validation.email")),
+  role: yup.object().required(t("validation.role")),
 });
 
 export const ROLES = [

@@ -1,4 +1,7 @@
+import { t } from "i18next";
 import { Text, Settings, UserCircle } from "neetoicons";
+
+import { PLURAL } from "constants";
 
 export const APP_NAME = "Wheel";
 
@@ -8,17 +11,17 @@ export const LOGOUT_PATH = "/logout";
 
 export const SIDEBAR_NAV_LINKS = [
   {
-    label: "Notes",
+    label: t("common.note", PLURAL),
     to: "/notes",
     icon: Text,
   },
   {
-    label: "Contacts",
+    label: t("common.contact", PLURAL),
     to: "/contacts",
     icon: UserCircle,
   },
   {
-    label: "Settings",
+    label: t("common.settings"),
     to: "/settings",
     icon: Settings,
   },
