@@ -19,12 +19,19 @@
     "contact_other": "Contacts",
     "archived": "Archived",
     "completed": "Completed",
-    "phase": "Phase 2"
+    "phaseWithNumber": "Phase {{number}}"
   },
   "emptyState": {
-    "addNewItem": "Add New {{item}}",
-    "addItemDescription": "Add your {{item}} to send customized emails to them.",
-    "message": "Looks like you don't have any {{item}}!"
+    "notes": {
+      "addNewNote": "Add New Note",
+      "description": "Add your notes to send customized emails to them.",
+      "message": "Looks like you don't have any notes!"
+    },
+    "contacts": {
+      "addNewContact": "Add New Contact",
+      "description": "Add your contacts to send customized emails to them.",
+      "message": "Looks like you don't have any contacts!"
+    }
   },
   "notes": {
     "allNotes": "All Notes",
@@ -63,7 +70,7 @@
     "search": "Search Name, Email, Phone Number, Etc."
   },
   "contacts": {
-    "addContacts": "Add Contact",
+    "addContact": "Add Contact",
     "allContacts": "All Contacts"
   }
 }
