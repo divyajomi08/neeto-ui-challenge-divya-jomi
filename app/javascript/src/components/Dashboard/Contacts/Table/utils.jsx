@@ -12,13 +12,10 @@ const {
   MenuItem: { Button },
 } = Dropdown;
 
-export const CURRENT_PAGE_NUMBER = 1;
-export const DEFAULT_PAGE_SIZE = 10;
-
-export const COLUMN_DATA = [
+export const getColumnData = handleDelete => [
   {
     key: "name",
-    title: "Name & Role",
+    title: t("common.nameAndRole"),
     render: row => (
       <div className="flex items-center space-x-3">
         <Avatar
@@ -38,22 +35,23 @@ export const COLUMN_DATA = [
   {
     dataIndex: "email",
     key: "email",
-    title: "Email",
+    title: t("common.email"),
   },
   {
     dataIndex: "createdAt",
     key: "createdAt",
-    title: "Created At",
+    title: t("common.createdAt"),
   },
   {
-    dataIndex: "action",
     key: "action",
     align: "right",
-    render: () => (
+    render: row => (
       <Dropdown buttonStyle="text" icon={MenuHorizontal}>
         <Menu>
           <Button>{t("common.edit")}</Button>
-          <Button style="danger">{t("common.delete")}</Button>
+          <Button style="danger" onClick={() => handleDelete(row)}>
+            {t("common.delete")}
+          </Button>
         </Menu>
       </Dropdown>
     ),

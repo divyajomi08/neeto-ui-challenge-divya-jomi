@@ -24,7 +24,10 @@
     "lastName": "Last Name",
     "emailAddress": "Email Address",
     "role": "Role",
-    "settings": "Settings"
+    "settings": "Settings",
+    "createdAt": "Created At",
+    "nameAndRole": "Name & Role",
+    "email": "Email"
   },
   "emptyState": {
     "notes": {
@@ -86,6 +89,7 @@
     "addContact": "Add Contact",
     "allContacts": "All Contacts",
     "addNewContact": "Add New Contact",
-    "add": { "successMessage": "Contact added successfully" }
+    "add": { "successMessage": "Contact added successfully." },
+    "delete": { "successMessage": "Contact deleted successfully." }
   }
 }

@@ -2,13 +2,11 @@ import React, { useState } from "react";
 
 import { Table as NeetoUITable } from "neetoui";
 
-import {
-  COLUMN_DATA,
-  CURRENT_PAGE_NUMBER,
-  DEFAULT_PAGE_SIZE,
-} from "./constants";
+import { getColumnData } from "./utils";
 
-const Table = ({ contacts = [] }) => {
+import { DEFAULT_PAGE_SIZE } from "../constants";
+
+const Table = ({ contacts = [], handleDelete }) => {
   const [selectedRows, setSelectedRows] = useState([]);
 
   return (
@@ -16,8 +14,7 @@ const Table = ({ contacts = [] }) => {
       <NeetoUITable
         fixedHeight
         rowSelection
-        columnData={COLUMN_DATA}
-        currentPageNumber={CURRENT_PAGE_NUMBER}
+        columnData={getColumnData(handleDelete)}
         defaultPageSize={DEFAULT_PAGE_SIZE}
         rowData={contacts}
         selectedRowKeys={selectedRows}
