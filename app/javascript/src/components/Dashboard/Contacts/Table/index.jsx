@@ -8,7 +8,7 @@ import {
   DEFAULT_PAGE_SIZE,
 } from "./constants";
 
-const Table = ({ contacts = [] }) => {
+const Table = ({ contacts = [], handleDelete }) => {
   const [selectedRows, setSelectedRows] = useState([]);
 
   return (
@@ -16,7 +16,7 @@ const Table = ({ contacts = [] }) => {
       <NeetoUITable
         fixedHeight
         rowSelection
-        columnData={COLUMN_DATA}
+        columnData={COLUMN_DATA(handleDelete)}
         currentPageNumber={CURRENT_PAGE_NUMBER}
         defaultPageSize={DEFAULT_PAGE_SIZE}
         rowData={contacts}

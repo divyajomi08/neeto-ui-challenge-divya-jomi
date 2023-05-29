@@ -2,14 +2,15 @@ import React, { useState } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { Plus } from "neetoicons";
-import { Button } from "neetoui";
+import { Button, Toastr } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
-import { noop } from "utils";
+import { getFullName, noop } from "utils";
 
+import DeleteAlert from "components/commons/DeleteAlert";
 import EmptyState from "components/commons/EmptyState";
 import MenuBar from "components/commons/MenuBar";
-import { PLURAL } from "constants";
+import { PLURAL, SINGULAR } from "constants";
 
 import { MAIN_BLOCKS, ROW_DATA } from "./constants";
 import NewContactPane from "./Pane/Create";
@@ -20,8 +21,29 @@ const Contacts = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNewContactPaneOpen, setIsNewContactPaneOpen] = useState(false);
   const [contacts, setContacts] = useState(ROW_DATA);
+  const [selectedContact, setSelectedContact] = useState({});
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
 
   const { t } = useTranslation();
+
+  const fullName = getFullName(
+    selectedContact.firstName,
+    selectedContact.lastName
+  );
+
+  const handleDelete = () => {
+    const filteredContacts = contacts.filter(
+      ({ id }) => id !== selectedContact.id
+    );
+    setContacts(filteredContacts);
+    setIsDeleteAlertOpen(false);
+    Toastr.success(t("contacts.delete.successMessage"));
+  };
+
+  const handleDeletePrompt = contact => {
+    setSelectedContact(contact);
+    setIsDeleteAlertOpen(true);
+  };
 
   return (
     <>
@@ -49,7 +71,10 @@ const Contacts = () => {
           }}
         />
         {contacts.length ? (
-          <ContactsTable contacts={contacts} />
+          <ContactsTable
+            contacts={contacts}
+            handleDelete={handleDeletePrompt}
+          />
         ) : (
           <EmptyState
             image={EmptyNotesListImage}
@@ -63,6 +88,13 @@ const Contacts = () => {
           setContacts={setContacts}
           showPane={isNewContactPaneOpen}
           onClose={() => setIsNewContactPaneOpen(false)}
+        />
+        <DeleteAlert
+          handleDelete={handleDelete}
+          isOpen={isDeleteAlertOpen}
+          item={t("common.contact", SINGULAR)}
+          itemName={fullName}
+          onClose={() => setIsDeleteAlertOpen(false)}
         />
       </Container>
     </>

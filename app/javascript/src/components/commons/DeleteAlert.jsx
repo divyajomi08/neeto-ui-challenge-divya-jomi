@@ -8,7 +8,7 @@ const DeleteAlert = ({
   isOpen,
   item,
   itemName = "",
-  isSubmitting,
+  isSubmitting = false,
   onClose,
   handleDelete,
 }) => {
