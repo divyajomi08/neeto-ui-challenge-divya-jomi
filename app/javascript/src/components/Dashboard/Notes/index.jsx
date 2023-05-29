@@ -85,7 +85,7 @@ const Notes = () => {
             />
           }
           searchProps={{
-            placeholder: t("notes.searchNotes"),
+            placeholder: t("placeholder.search"),
             value: searchTerm,
             onChange: e => setSearchTerm(e.target.value),
           }}

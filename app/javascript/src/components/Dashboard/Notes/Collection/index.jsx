@@ -16,9 +16,9 @@ const Collection = ({ notes = [], setSelectedNote, setIsDeleteAlertOpen }) => {
       <EmptyState
         image={EmptyNotesListImage}
         primaryAction={noop}
-        primaryActionLabel={t("emptyState.addNewNotes")}
-        subtitle={t("emptyState.addNotesDescription")}
-        title={t("emptyState.emptyNotes")}
+        primaryActionLabel={t("emptyState.notes.addNewNote")}
+        subtitle={t("emptyState.notes.description")}
+        title={t("emptyState.notes.message")}
       />
     );
   }
