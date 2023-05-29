@@ -5,7 +5,7 @@ const AVATAR_IMAGE_URL = "https://randomuser.me/api/portraits/women/90.jpg";
 export const INITIAL_FORM_VALUES = {
   title: "",
   description: "",
-  role: "",
+  contact: "",
   tags: [],
 };
 

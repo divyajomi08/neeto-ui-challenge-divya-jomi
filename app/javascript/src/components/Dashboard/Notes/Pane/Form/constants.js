@@ -4,7 +4,7 @@ import * as yup from "yup";
 export const VALIDATION_SCHEMA = yup.object({
   title: yup.string().required(t("validation.title")),
   description: yup.string().required(t("validation.description")),
-  role: yup.object().required(t("validation.role")),
+  contact: yup.object().required(t("validation.contact")),
   tags: yup.array().min(1, t("validation.tag")).required(t("validation.tag")),
 });
 
@@ -35,7 +35,7 @@ export const TAGS = [
   },
 ];
 
-export const ROLES = [
+export const CONTACTS = [
   { label: "Oliver Smith", value: "523621a4-ac39-48e5-8d86-eba9310d2055" },
   { label: "Eve Smith", value: "523621a4-ac39-48e5-8d86-eba9310d5098" },
   { label: "Sam Smith", value: "523621a4-ac39-48e5-8d86-eba9310d5685" },
