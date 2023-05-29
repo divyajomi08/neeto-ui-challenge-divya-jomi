@@ -4,8 +4,16 @@ import * as yup from "yup";
 export const VALIDATION_SCHEMA = yup.object({
   title: yup.string().required(t("validation.title")),
   description: yup.string().required(t("validation.description")),
-  contact: yup.object().required(t("validation.contact")),
-  tags: yup.array().min(1, t("validation.tag")).required(t("validation.tag")),
+  contact: yup
+    .object()
+    .shape({ label: yup.string(), value: yup.string() })
+    .nullable()
+    .required(t("validation.contact")),
+  tags: yup
+    .array()
+    .of(yup.object().shape({ label: yup.string(), value: yup.string() }))
+    .min(1, t("validation.tag"))
+    .required(t("validation.tag")),
 });
 
 export const TAGS = [

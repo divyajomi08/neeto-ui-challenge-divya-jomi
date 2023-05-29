@@ -8,7 +8,11 @@ export const VALIDATION_SCHEMA = yup.object({
     .string()
     .email(t("validation.validEmail"))
     .required(t("validation.email")),
-  role: yup.object().required(t("validation.role")),
+  role: yup
+    .object()
+    .shape({ label: yup.string(), value: yup.string() })
+    .nullable()
+    .required(t("validation.role")),
 });
 
 export const ROLES = [
