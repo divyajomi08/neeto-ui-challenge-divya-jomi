@@ -69,7 +69,8 @@
     "lastName": "Last name is required",
     "email": "Email address is required",
     "validEmail": "Enter valid email",
-    "contact": "Assigned contact is required"
+    "contact": "Assigned contact is required",
+    "validTitle": "Must contain at least one alphanumeric character"
   },
   "button": {
     "save": "Save Changes",

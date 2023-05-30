@@ -2,7 +2,10 @@ import { t } from "i18next";
 import * as yup from "yup";
 
 export const VALIDATION_SCHEMA = yup.object({
-  title: yup.string().required(t("validation.title")),
+  title: yup
+    .string()
+    .matches(/.*[a-zA-Z0-9].*/, t("validation.validTitle"))
+    .required(t("validation.title")),
   description: yup.string().required(t("validation.description")),
   contact: yup
     .object()
