@@ -12,31 +12,44 @@ const {
   MenuItem: { Button },
 } = Dropdown;
 
+const renderActionDropdown = ({ row, handleDelete }) => (
+  <Dropdown buttonStyle="text" icon={MenuHorizontal}>
+    <Menu>
+      <Button>{t("common.edit")}</Button>
+      <Button style="danger" onClick={() => handleDelete(row)}>
+        {t("common.delete")}
+      </Button>
+    </Menu>
+  </Dropdown>
+);
+
+const renderNameAndRole = row => (
+  <div className="flex items-center space-x-3">
+    <Avatar
+      size="large"
+      user={{
+        imageUrl: row.profileImageUrl,
+        name: getFullName({
+          firstName: row.firstName,
+          lastName: row.lastName,
+        }),
+      }}
+    />
+    <Profile
+      title={row.role}
+      name={getFullName({
+        firstName: row.firstName,
+        lastName: row.lastName,
+      })}
+    />
+  </div>
+);
+
 export const buildColumnData = handleDelete => [
   {
     key: "name",
     title: t("common.nameAndRole"),
-    render: row => (
-      <div className="flex items-center space-x-3">
-        <Avatar
-          size="large"
-          user={{
-            imageUrl: row.profileImageUrl,
-            name: getFullName({
-              firstName: row.firstName,
-              lastName: row.lastName,
-            }),
-          }}
-        />
-        <Profile
-          title={row.role}
-          name={getFullName({
-            firstName: row.firstName,
-            lastName: row.lastName,
-          })}
-        />
-      </div>
-    ),
+    render: row => renderNameAndRole(row),
   },
   {
     dataIndex: "email",
@@ -51,15 +64,6 @@ export const buildColumnData = handleDelete => [
   {
     key: "action",
     align: "right",
-    render: row => (
-      <Dropdown buttonStyle="text" icon={MenuHorizontal}>
-        <Menu>
-          <Button>{t("common.edit")}</Button>
-          <Button style="danger" onClick={() => handleDelete(row)}>
-            {t("common.delete")}
-          </Button>
-        </Menu>
-      </Dropdown>
-    ),
+    render: row => renderActionDropdown({ row, handleDelete }),
   },
 ];
